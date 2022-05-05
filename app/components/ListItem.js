@@ -1,10 +1,10 @@
 import React from 'react';
 import { View, StyleSheet, Image, TouchableHighlight } from 'react-native';
-import AppText from './AppText';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 import Swipeable from 'react-native-gesture-handler/Swipeable';
 
+import AppText from './AppText';
 import colors from '../config/colors';
-import { TouchableOpacity } from 'react-native-web';
 
 function ListItem({ title, subTitle, image, IconComponent, onPress, renderRightActions }) {
           return (
@@ -16,9 +16,10 @@ function ListItem({ title, subTitle, image, IconComponent, onPress, renderRightA
                                                   {IconComponent}
                                                   {image && <Image style={styles.image} source={image} />}
                                                   <View style={styles.detailsContainer}>
-                                                            <AppText style={styles.title}>{title}</AppText>
-                                                            {subTitle && <AppText style={styles.subTitle}>{subTitle}</AppText>}
+                                                            <AppText style={styles.title} numberOfLines={1}>{title}</AppText>
+                                                            {subTitle && <AppText style={styles.subTitle} numberOfLines={2}>{subTitle}</AppText>}
                                                   </View>
+                                                  <MaterialCommunityIcons color={colors.medium} name="chevron-right" size={25} />
                                         </View>
                               </TouchableHighlight>
                     </Swipeable>
@@ -27,11 +28,13 @@ function ListItem({ title, subTitle, image, IconComponent, onPress, renderRightA
 
 const styles = StyleSheet.create({
           container: {
+                    alignItems: "center",
                     flexDirection: "row",
                     padding: 15,
                     backgroundColor: colors.white
           },
           detailsContainer: {
+                    flex: 1,
                     marginLeft: 10,
                     justifyContent: 'center'
           },
