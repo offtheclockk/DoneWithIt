@@ -1,46 +1,34 @@
 import React, { useEffect, useState } from 'react';
-import { StyleSheet, Button, Image } from 'react-native';
-import * as ImagePicker from 'expo-image-picker';
+import { Text } from 'react-native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { NavigationContainer } from '@react-navigation/native';
 
-import MessagesScreen from './app/screens/MessagesScreen'
-import ListingEditScreen from './app/screens/ListingEditScreen';
 import Screen from './app/components/Screen';
-import AppButton from './app/components/AppButton';
+
+const Tweets = () => (
+  <Screen>
+    <Text>Tweets</Text>
+  </Screen>
+);
+const TweetDetails = () => (
+  <Screen>
+    <Text>Tweet Details</Text>
+  </Screen>
+);
+
+const Stack = createNativeStackNavigator();
+const StackNavigator = () => (
+  <Stack.Navigator>
+    <Stack.Screen name="Tweets" component={Tweets} />
+    <Stack.Screen name="TweetDetails" component={TweetDetails} />
+  </Stack.Navigator>
+);
 
 export default function App() {
-  const [imageUri, setImageUri] = useState();
-
-  const requestPermission = async () => {
-    const { granted } = await ImagePicker.requestMediaLibraryPermissionsAsync();
-    if (!granted)
-      alert('You need to enable permission to access the library')
-  };
-
-  useEffect(() => {
-    requestPermission();
-  }, [])
-
-  const selectImage = async () => {
-    try {
-      const result = await ImagePicker.launchImageLibraryAsync();
-      if (!result.cancelled)
-        setImageUri(result.uri);
-    } catch (error) {
-      console.log('Error reading an image')
-    }
-  }
 
   return (
-    <Screen>
-      <Button title="Select image" onPress={selectImage} />
-      <Image source={{ uri: imageUri }} style={{ width: 200, height: 200 }} />
-    </Screen>
+    <NavigationContainer>
+      <StackNavigator />
+    </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-  },
-});
