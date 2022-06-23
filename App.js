@@ -4,11 +4,13 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { NavigationContainer, useNavigation } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { MaterialCommunityIcons } from '@expo/vector-icons'
+import NetInfo from '@react-native-community/netinfo';
 
 import Screen from './app/components/Screen';
 import AuthNavigator from './app/navigation/AuthNavigation';
 import AppNavigator from './app/navigation/AppNavigator';
 import navigationTheme from './app/navigation/navigationTheme';
+import OfflineNotice from './app/components/OfflineNotice';
 
 const Link = () => {
       const navigation = useNavigation();
@@ -81,8 +83,11 @@ const TabNavigator = () => (
 export default function App() {
 
       return (
-            <NavigationContainer theme={navigationTheme}>
-                  <AppNavigator />
-            </NavigationContainer>
+            <>
+                  <OfflineNotice />
+                  <NavigationContainer theme={navigationTheme}>
+                        <AppNavigator />
+                  </NavigationContainer>
+            </>
       );
 }
