@@ -33,6 +33,7 @@ const getUser = async () => {
 }
 
 export default {
+          getToken,
           getUser,
           removeToken,
           storeToken,
