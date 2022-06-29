@@ -16,6 +16,9 @@ import OfflineNotice from './app/components/OfflineNotice';
 import AuthContext from './app/auth/context';
 import storage from './app/auth/storage';
 import { navigationRef } from './app/navigation/rootNavigation';
+import logger from './app/utility/logger';
+
+logger.start();
 
 Notifications.setNotificationHandler({
       handleNotification: async () => {
