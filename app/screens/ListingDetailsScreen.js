@@ -58,6 +58,6 @@ const styles = StyleSheet.create({
           userContainer: {
                     marginVertical: 40,
           },
-})
+});
 
 export default ListingDetailsScreen;

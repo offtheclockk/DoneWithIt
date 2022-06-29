@@ -30,7 +30,7 @@ function ListingsScreen({ navigation }) {
                                         )}
                                         <FlatList
                                                   data={getListingsApi.data}
-                                                  keyExtractor={listing => listing.id.toString()}
+                                                  keyExtractor={(listing) => listing.id.toString()}
                                                   renderItem={({ item }) =>
                                                             <Card
                                                                       title={item.title}
