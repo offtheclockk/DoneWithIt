@@ -31,8 +31,8 @@ function ListingDetailsScreen({ route }) {
                                                             subTitle="5 Listings"
                                                   />
                                         </View>
-                                        <ContactSellerForm listing={listing} />
                               </View>
+                              {/* <ContactSellerForm listing={listing} /> */}
                     </KeyboardAvoidingView>
           );
 }
