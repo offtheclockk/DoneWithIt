@@ -6,6 +6,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { MaterialCommunityIcons } from '@expo/vector-icons'
 import NetInfo from '@react-native-community/netinfo';
 import AppLoading from 'expo-app-loading';
+import * as Notifications from 'expo-notifications';
 
 import Screen from './app/components/Screen';
 import AuthNavigator from './app/navigation/AuthNavigation';
@@ -83,6 +84,16 @@ const TabNavigator = () => (
             <Tab.Screen name="Account" component={Account} />
       </Tab.Navigator>
 )
+
+Notifications.setNotificationHandler({
+      handleNotification: async () => {
+            return {
+                  shouldShowAlert: true,
+                  shouldPlaySound: true,
+                  shouldSetBadge: true,
+            };
+      },
+});
 
 export default function App() {
       const [user, setUser] = useState();
